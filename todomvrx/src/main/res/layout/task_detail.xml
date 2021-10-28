@@ -22,8 +22,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin" />
 
     <TextView
@@ -32,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/complete"
         android:layout_toRightOf="@id/complete"
+        tools:text="任务标题"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -39,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/task_title"
+        tools:text="任务描述..."
         android:layout_toRightOf="@id/complete"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 </merge>
