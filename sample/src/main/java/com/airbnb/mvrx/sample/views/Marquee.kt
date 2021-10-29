@@ -11,6 +11,9 @@ import com.airbnb.mvrx.sample.R
 import com.airbnb.mvrx.sample.databinding.MarqueeBinding
 import com.airbnb.mvrx.viewbinding.viewBinding
 
+/**
+ * 使用Epoxy来自定义View
+ */
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class Marquee @JvmOverloads constructor(
     context: Context,
