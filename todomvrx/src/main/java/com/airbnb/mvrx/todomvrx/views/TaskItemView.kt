@@ -1,11 +1,13 @@
 package com.airbnb.mvrx.todomvrx.views
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import android.widget.CheckBox
 import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.annotation.ColorInt
 import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
@@ -27,7 +29,7 @@ class TaskItemView @JvmOverloads constructor(
         inflate(context, R.layout.task_item, this)
     }
 
-    @TextProp
+    @TextProp(defaultRes = R.string.app_name)
     fun setTitle(title: CharSequence) {
         titleView.text = title
     }
@@ -36,6 +38,12 @@ class TaskItemView @JvmOverloads constructor(
     fun setChecked(checked: Boolean) {
         checkbox.isChecked = checked
         setBackgroundResource(if (checked) R.drawable.completed_task_background else 0)
+    }
+
+    @JvmOverloads
+    @ModelProp
+    fun setColor(@ColorInt color:Int = Color.RED){
+        titleView.setTextColor(color)
     }
 
     @CallbackProp
