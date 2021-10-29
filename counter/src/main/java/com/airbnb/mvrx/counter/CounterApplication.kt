@@ -6,6 +6,7 @@ import com.airbnb.mvrx.Mavericks
 class CounterApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+        // 初始化Mavericks
         Mavericks.initialize(this)
     }
 }

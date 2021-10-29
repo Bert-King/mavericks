@@ -62,8 +62,8 @@ class TaskListFragment : BaseFragment() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.menu_refresh -> viewModel.refreshTasks().andTrue()
-        R.id.menu_filter -> showFilteringPopUpMenu().andTrue()
         R.id.menu_clear -> viewModel.clearCompletedTasks().andTrue()
+        R.id.menu_filter -> showFilteringPopUpMenu().andTrue()
         else -> super.onOptionsItemSelected(item)
     }
 
@@ -111,6 +111,9 @@ class TaskListFragment : BaseFragment() {
         }
     }
 
+    /**
+     * 显示 任务过滤菜单
+     */
     private fun showFilteringPopUpMenu() {
         PopupMenu(requireContext(), requireActivity().findViewById<View>(R.id.menu_filter)).run {
             menuInflater.inflate(R.menu.filter_tasks, menu)

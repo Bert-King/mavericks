@@ -14,7 +14,7 @@ class DogRepository {
             Dog(
                 44365525,
                 "Turbo",
-                "Catahoula Leopard Dog Mix",
+                "Catahoula Leopard Dog Mix(加泰霍拉豹犬)",
                 "https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/44365525/3/?bust=1554156953&width=1080",
                 "Meet Turbo: Tank and Turbo are two gorgeous Catahoula mix boys who love nothing more than running and playing. These guys are approximately 9 weeks old and currently weigh around 13 pounds each. They are a good medium-large breed dog, and should grow to be around 60-70 pounds. Catahoulas have beautiful markings and these two are no different. The breed is known for being independent working dogs. Catahoulas require firm guidance and early socialization, as they can be independent, territorial, and protective. Once they know their place in the family unit, they are affectionate, loyal, and gentle."
             ),

@@ -41,6 +41,7 @@ import kotlinx.parcelize.Parcelize
 data class AddEditTaskArgs(val id: String? = null) : Parcelable
 
 data class EditTaskState(val newTitle: String? = null, val newDescription: String? = null) : MavericksState
+
 class EditTaskViewModel(initialState: EditTaskState) : MvRxViewModel<EditTaskState>(initialState) {
     fun setTitle(title: String) {
         setState { copy(newTitle = title) }
@@ -53,6 +54,7 @@ class EditTaskViewModel(initialState: EditTaskState) : MvRxViewModel<EditTaskSta
 
 /**
  * Main UI for the add task screen. Users can enter a task title and description.
+ * 添加任务界面。（用户可以输入标题和描述）
  */
 class AddEditTaskFragment : BaseFragment() {
     private val taskViewModel: EditTaskViewModel by fragmentViewModel()
@@ -108,6 +110,9 @@ class AddEditTaskFragment : BaseFragment() {
         }
     }
 
+    /**
+     *界面销毁时，隐藏输入法
+     */
     override fun onDestroyView() {
         val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view?.windowToken, 0)

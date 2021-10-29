@@ -24,6 +24,9 @@ data class TasksState(
     val lastEditedTask: String? = null
 ) : MavericksState
 
+/**
+ * 业务逻辑都在ViewModel里面
+ */
 class TasksViewModel(initialState: TasksState, private val sources: List<TasksDataSource>) : MvRxViewModel<TasksState>(initialState) {
 
     init {
@@ -31,6 +34,9 @@ class TasksViewModel(initialState: TasksState, private val sources: List<TasksDa
         refreshTasks()
     }
 
+    /**
+     * 刷新任务
+     */
     fun refreshTasks() {
         Observable.merge(sources.map { it.getTasks().toObservable() })
             .doOnSubscribe { setState { copy(isLoading = true) } }
@@ -38,11 +44,17 @@ class TasksViewModel(initialState: TasksState, private val sources: List<TasksDa
             .execute { copy(taskRequest = it, tasks = it() ?: tasks, lastEditedTask = null) }
     }
 
+    /**
+     * 更新任务
+     */
     fun upsertTask(task: Task) {
         setState { copy(tasks = tasks.upsert(task) { it.id == task.id }, lastEditedTask = task.id) }
         sources.forEach { it.upsertTask(task) }
     }
 
+    /**
+     * 设置任务的状态
+     */
     fun setComplete(id: String, complete: Boolean) {
         setState {
             val task = tasks.findTask(id) ?: return@setState this
@@ -52,11 +64,17 @@ class TasksViewModel(initialState: TasksState, private val sources: List<TasksDa
         sources.forEach { it.setComplete(id, complete) }
     }
 
+    /**
+     * 清除已完成的任务
+     */
     fun clearCompletedTasks() = setState {
         sources.forEach { it.clearCompletedTasks() }
         copy(tasks = tasks.filter { !it.complete }, lastEditedTask = null)
     }
 
+    /**
+     * 删除任务
+     */
     fun deleteTask(id: String) {
         setState { copy(tasks = tasks.delete { it.id == id }, lastEditedTask = id) }
         sources.forEach { it.deleteTask(id) }
