@@ -14,12 +14,18 @@ import com.airbnb.mvrx.sample.navigation.databinding.FragmentBBinding
 import com.airbnb.mvrx.viewbinding.viewBinding
 import com.airbnb.mvrx.withState
 
+/**
+ * 注意这里的 注解PersistState
+ */
 data class FlowNavigationState(@PersistState val count: Int = 0) : MavericksState
 
 class FlowNavigationViewModel(state: FlowNavigationState) : MavericksViewModel<FlowNavigationState>(state) {
     fun incrementCount() = setState { copy(count = count + 1) }
 }
 
+/**
+ * 视图：FragmentA
+ */
 class FlowFragmentA : Fragment(R.layout.fragment_a), MavericksView {
     private val binding: FragmentABinding by viewBinding()
     /** This ViewModel will be shared across FlowFragmentA and FlowFragmentB. */
@@ -39,6 +45,9 @@ class FlowFragmentA : Fragment(R.layout.fragment_a), MavericksView {
     }
 }
 
+/**
+ * 视图:FragmentB
+ */
 class FlowFragmentB : Fragment(R.layout.fragment_b), MavericksView {
     private val binding: FragmentBBinding by viewBinding()
     /** This ViewModel will be shared across FlowFragmentA and FlowFragmentB. */
