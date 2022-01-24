@@ -82,7 +82,7 @@ captures/
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
 .cxx/
-
+10:12 2022/1/2410:12 2022/1/24
 # Google Services (e.g. APIs or Firebase)
 # google-services.json
 
@@ -111,4 +111,9 @@ lint/tmp/
 
 
 # Mocks
-/mvrx_temp_mocks/*
+sample/
+todomvrx
+.idea/*
+mvrx/
+.idea/codeStyles/Project.xml
+.idea/codeStyles/Project.xml
